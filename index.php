@@ -32,7 +32,23 @@ require_once("inc/db.php");
       <!-- Content goes here -->
       <div class="wrap">
       	<div class="row text-center">
-      		<button id="addProject" class="btn btn-success"><img class="icon-project-button" src="img/plus-project.fw.png" />Add Project</button><br /><br />
+
+          <button id="addProject" class="btn btn-success">
+              <img class="icon-project-button" src="img/plus-project.fw.png" />Add Project
+          </button><br /><br />
+          
+
+          <div id="sql-result" class="hide row text-left">
+            
+
+          </div>
+            <button id="get-all-statuses" class="btn btn-success">
+                <img class="icon-project-button" src="img/plus-project.fw.png" />SQL Queries
+            </button><br /><br />
+
+          
+            
+          
       	</div>
       </div>
     </div>

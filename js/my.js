@@ -11,6 +11,7 @@ var main = function() {
 			data: projectName, //Form variables
 			success:function(response){
 				$(".container").prepend(response);
+				$(window).scrollTop(0);
 			},
 
 			error:function (xhr, ajaxOptions, thrownError){
@@ -271,6 +272,29 @@ var main = function() {
 			}
 			});
 		};
+		
+
+	});
+
+	// sql query Get all statuses asc
+
+	$('body').on('click', '#get-all-statuses', function() {
+		$('#sql-result').removeClass('hide');
+
+		jQuery.ajax({
+		type: "POST", // HTTP method POST or GET
+		url: "inc/sql-queries.php", //Where to make Ajax calls
+		success:function(response){
+			console.log(response);
+			$('#sql-result').html(response);
+			$(window).scrollTop($('#sql-result').offset().top);
+			
+		},
+		error:function (xhr, ajaxOptions, thrownError){
+			//On error, we alert user
+			alert(thrownError);
+		}
+		});
 		
 
 	});

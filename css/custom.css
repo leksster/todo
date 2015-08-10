@@ -1,7 +1,7 @@
 body {
 	background-image: url("../img/bg.jpg");
-	background-repeat: repeat-x;
-    background-size: 100% auto;
+	background-repeat: repeat;
+    background-size: cover;
     font-family: Arial;
     font-size: 13px;
 }
@@ -213,7 +213,7 @@ table.edit tbody > tr > td {
 	width: 108px;
 }
 
-#addProject {
+#addProject, #get-all-statuses, #get-the-count-asc, #get-the-count-desc, #n-letter {
 	background-image: url("../img/button-project.fw.png");
 	background-repeat: repeat-x;
 	border-radius: 0px;
@@ -221,6 +221,10 @@ table.edit tbody > tr > td {
 	width: 221px;
 	height: 47px;
 	font-size: 1.5em;
+}
+
+#get-the-count-asc, #get-the-count-desc, #n-letter {
+	font-size: 0.9em;
 }
 
 .icon-project-button {
@@ -253,4 +257,17 @@ table.edit tbody > tr > td {
 
 .project {
 	margin-bottom: 20px;
+}
+
+#sql-result {
+	margin: auto;
+	width: 730px;
+	padding: 20px;
+	color: #9b869c;
+	font-family: monospace;
+	background: #222;
+}
+
+#sql-result .returned-result {
+	color: #cd6a51;
 }
