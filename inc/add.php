@@ -2,8 +2,6 @@
 
 include_once("db.php");
 
-
-
 if(isset($_POST["text"]) && strlen($_POST["text"])>0 && isset($_POST["id"]) && strlen($_POST["id"])>0) 
 {	//check $_POST["content_txt"] is not empty
 
@@ -14,13 +12,14 @@ if(isset($_POST["text"]) && strlen($_POST["text"])>0 && isset($_POST["id"]) && s
 	
 	// Insert sanitize string in record
 	$insert_values = $db->query("INSERT INTO tasks(name, project_id) VALUES('".$textToSave."','".$idToSave."')");
-
+	$my_id = $db->insert_id;
+	$update_value = $db->query("UPDATE tasks SET `order`=".$my_id." WHERE id=".$my_id."");
 
 	if($insert_values)
 	{
 
 		 //Record was successfully inserted, respond result back to index page
-		  $my_id = $db->insert_id; //Get ID of last inserted row from MySQL
+		   //Get ID of last inserted row from MySQL
 		  echo '<tbody id = "selected_'.$my_id.'">';
 		  echo '<tr class="top-bor">';
 		  echo '<td class="text-center table-checkbox" width="6%">';

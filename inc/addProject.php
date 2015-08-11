@@ -46,7 +46,7 @@ if(isset($_POST["nm"]) && strlen($_POST["nm"])>0)
 			echo '</div>';
 			echo '</div>';
 			echo '<div class="row tasks">';
-			echo '<table id="render_'.$my_id.'">';
+			echo '<table class="sortme" id="render_'.$my_id.'">';
 			echo '</table>';
 			echo '</div>';
 			echo '</div>';

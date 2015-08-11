@@ -1,8 +1,7 @@
 <?php 
 
 	require_once("db.php");
-
-	$tasks = $db->query("SELECT * FROM tasks ORDER BY `order` ASC");
+	$tasks = $db->query("SELECT * FROM tasks ORDER BY `order` DESC");
 	$projects = $db->query("SELECT * FROM projects ORDER BY `id` DESC");
 
 	$tArr = array();

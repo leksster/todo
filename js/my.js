@@ -40,6 +40,23 @@ var main = function() {
 				success:function(response){
 					$(".container").prepend(response);
 					$(window).scrollTop(0);
+					$('.sortme').sortable({
+						axis: 'y',
+						handle: '.moveme',
+						update: function(event, ui) {
+							var data = $(this).sortable('serialize');
+							//post to server using $.post
+							$.ajax({
+							data: data,
+							type: 'POST',
+							url: 'inc/sort.php',				
+							success: function(response) {
+								$('.tasks').append(response);
+								}
+							});
+
+						},
+					});
 				},
 
 				error:function (xhr, ajaxOptions, thrownError){
@@ -52,8 +69,7 @@ var main = function() {
 
 
 	// Add a task
-
-	$("body").on("click keydown", ".add-task", function(e) {
+	$("body").on("click keydown", ".add-task", function(e) {	
 		var clickedID = this.id;
 		var cleanID = clickedID.slice(8);
 		var inpTextId = '#inputText_' + cleanID;
@@ -68,6 +84,23 @@ var main = function() {
 			success:function(response){
 				$(renderId).prepend(response);
 				$("#inputText_" + cleanID).val('');
+				$('.sortme').sortable({
+					axis: 'y',
+					handle: '.moveme',
+					update: function(event, ui) {
+						var data = $(this).sortable('serialize');
+						//post to server using $.post
+						$.ajax({
+						data: data,
+						type: 'POST',
+						url: 'inc/sort.php',				
+						success: function(response) {
+							$('.tasks').append(response);
+							}
+						});
+
+					},
+				});
 			},
 			error:function (xhr, ajaxOptions, thrownError){
 				alert(thrownError);
@@ -93,6 +126,23 @@ var main = function() {
 				success:function(response){
 					$(renderId).prepend(response);
 					$("#inputText_" + cleanID).val('');
+					$('.sortme').sortable({
+						axis: 'y',
+						handle: '.moveme',
+						update: function(event, ui) {
+							var data = $(this).sortable('serialize');
+							//post to server using $.post
+							$.ajax({
+							data: data,
+							type: 'POST',
+							url: 'inc/sort.php',				
+							success: function(response) {
+								$('.tasks').append(response);
+								}
+							});
+
+						},
+					});
 				},
 				error:function (xhr, ajaxOptions, thrownError){
 					alert(thrownError);
