@@ -15,7 +15,7 @@ require_once("inc/db.php");
     <!-- Bootstrap -->
     
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link href="css/custom.css" rel="stylesheet">
 
     <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"> -->
@@ -42,13 +42,9 @@ require_once("inc/db.php");
             
 
           </div>
-            <button id="get-all-statuses" class="btn btn-success">
-                <img class="icon-project-button" src="img/plus-project.fw.png" />SQL Queries
-            </button><br /><br />
-
-          
-            
-          
+          <button id="get-all-statuses" class="btn btn-success">
+              <img class="icon-project-button" src="img/plus-project.fw.png" />SQL Queries
+          </button><br /><br />          
       	</div>
       </div>
     </div>

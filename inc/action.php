@@ -2,7 +2,7 @@
 
 	require_once("db.php");
 
-	$tasks = $db->query("SELECT * FROM tasks ORDER BY `id` DESC");
+	$tasks = $db->query("SELECT * FROM tasks ORDER BY `order` ASC");
 	$projects = $db->query("SELECT * FROM projects ORDER BY `id` DESC");
 
 	$tArr = array();
@@ -42,7 +42,7 @@
 		echo '</div>';
 		echo '</div>';
 		echo '<div class="row tasks">';
-		echo '<table id="render_'.$row['id'].'">';
+		echo '<table class="sortme" id="render_'.$row['id'].'">';
 
 		foreach ($tArr as $assoc) {
 			if ($assoc['project_id'] === $row['id']) {
@@ -62,7 +62,7 @@
 				echo '<td width="20%">';
 				echo '<table class="edit">';
 				echo '<tr>';
-				echo '<td class="edit-border" width="33%"><img class="moveme" src="img/move.fw.png" /></td>';
+				echo '<td class="edit-border" width="33%"><img class="moveme" id="movemee" src="img/move.fw.png" /></td>';
 				echo '<td class="edit-border" width="33%"><img class="editme" id="'.$assoc['id'].'" src="img/edit.fw.png" /></td>';
 				echo '<td width="33%"><img class="delme" id="'.$assoc['id'].'" src="img/delete.fw.png" /></td>';
 				echo '</tr>';
@@ -72,9 +72,6 @@
 				echo '</tbody>';
 			}
 		}
-
-		
-
 
 		echo '</table>';
 		echo '</div>';

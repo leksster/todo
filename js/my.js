@@ -1,44 +1,55 @@
 var main = function() {
 
+	//Render + sort
+
+	$.ajax({
+	type: "GET",
+	url: "inc/action.php"
+	}).done(function(data) {
+		$('.container').prepend(data);
+		$('.sortme').sortable({
+			axis: 'y',
+			handle: '.moveme',
+			update: function(event, ui) {
+				var data = $(this).sortable('serialize');
+				//post to server using $.post
+					$.ajax({
+					data: data,
+					type: 'POST',
+					url: 'inc/sort.php',				
+					success: function(response) {
+						$('.tasks').append(response);
+						}
+					});
+
+				},
+			});
+		});
+
 	//Add a project
 
 	$('#addProject').click(function() {
-		var projectName = 'nm='+ prompt("Please enter the name of new project");
-		$.ajax({
-			type: "POST", // HTTP method POST or GET
-			url: "inc/addProject.php", //Where to make Ajax calls
-			dataType:"text", // Data type, HTML, json etc.
-			data: projectName, //Form variables
-			success:function(response){
-				$(".container").prepend(response);
-				$(window).scrollTop(0);
-			},
-
-			error:function (xhr, ajaxOptions, thrownError){
-				alert(thrownError);
-			}
-		});
-	});
-
-
-
-	$('#render').sortable( {
-		axis: 'y',
-		handle: ".moveme",
-		update: function(event, ui) {
-			var data = $(this).sortable('serialize');
-			
-			//post to server useing $.post
+		var inputName = prompt("Please enter the name of new project");
+		if (inputName != null) {
+			var projectName = 'nm='+inputName;
 			$.ajax({
-				data: data,
-				type: 'POST',
-				url: 'inc/sort.php',				
-				success: function(response) {
-					$('.tasks').append(response);
+				type: "POST", // HTTP method POST or GET
+				url: "inc/addProject.php", //Where to make Ajax calls
+				dataType:"text", // Data type, HTML, json etc.
+				data: projectName, //Form variables
+				success:function(response){
+					$(".container").prepend(response);
+					$(window).scrollTop(0);
+				},
+
+				error:function (xhr, ajaxOptions, thrownError){
+					alert(thrownError);
 				}
 			});
-		},
+		};
+		
 	});
+
 
 	// Add a task
 
@@ -64,7 +75,7 @@ var main = function() {
 		});
 	});
 
-	// Add task press ENTER
+	// Add task on ENTER
 
 	$("body").on("keydown", ".form-control", function(e) {
 		if (e.which == '13') {	
@@ -212,12 +223,7 @@ var main = function() {
 
 	$('#addText').addClass('disabled');
 
-	$.ajax({
-		type: "GET",
-		url: "inc/action.php"
-	}).done(function(data) {
-		$('.container').prepend(data);
-	});
+
 
 	// EDIT task name
 
@@ -295,10 +301,7 @@ var main = function() {
 			alert(thrownError);
 		}
 		});
-		
-
 	});
-
 };
 
 $(document).ready(main);

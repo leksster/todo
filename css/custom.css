@@ -261,7 +261,7 @@ table.edit tbody > tr > td {
 
 #sql-result {
 	margin: auto;
-	width: 730px;
+	max-width: 730px;
 	padding: 20px;
 	color: #9b869c;
 	font-family: monospace;
@@ -270,4 +270,12 @@ table.edit tbody > tr > td {
 
 #sql-result .returned-result {
 	color: #cd6a51;
+}
+
+#get-all-statuses {
+	margin-top: 20px;
+}
+
+.ui-sortable-helper {
+	display: table;
 }
