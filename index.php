@@ -1,6 +1,4 @@
 <?php
-
-require_once("inc/validate.php"); 
 require_once("inc/db.php"); 
 ?>
 <!DOCTYPE html>
